@@ -1,11 +1,21 @@
 import "./App.css";
+import Movie from "./components/Movie";
 
 function App() {
+  const favoriteMovie = {
+    title: "Остров проклятых",
+    director: "Мартин Скорсезе",
+    releaseYear: "2010",
+    country: "США",
+  };
   return (
     <div className="App">
-      <h1>Мое имя: АЛИХАН</h1>
-      <p>Контактный телефон: +7 707 777 7777</p>
-      <p>Электронный адрес: 7777@gmail.com</p>
+      <Movie
+        title={favoriteMovie.title}
+        director={favoriteMovie.director}
+        releaseYear={favoriteMovie.releaseYear}
+        country={favoriteMovie.country}
+      />
     </div>
   );
 }
