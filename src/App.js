@@ -1,31 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
-import Personal from "./components/Personal";
+import Post from "./components/Post";
+import Comments from "./components/Comments";
 
-class App extends React.Component {
-  render() {
-    const personalInfo = {
-      fullName: "Алихан",
-      phone: "707700707",
-      email: "asdsad@gmail.com",
-      city: "Astana",
-      experience: "1.5",
-      skills: [".Net Framework", "RabbitMq", "PostgreSQL"],
-    };
+function App() {
+  const [comments, setComments] = useState([]);
+  const [commentCount, setCommentCount] = useState(0);
 
-    return (
-      <div className="App">
-        <Personal
-          fullName={personalInfo.fullName}
-          phone={personalInfo.phone}
-          email={personalInfo.email}
-          city={personalInfo.city}
-          experience={personalInfo.experience}
-          skills={personalInfo.skills}
-        />
-      </div>
-    );
-  }
+  const addComment = (comment) => {
+    setComments([...comments, comment]);
+    setCommentCount(commentCount + 1);
+  };
+
+  return (
+    <div>
+      <Post commentCount={commentCount} />
+      <Comments comments={comments} addComment={addComment} />
+    </div>
+  );
 }
 
 export default App;
