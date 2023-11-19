@@ -1,9 +1,8 @@
-// Import necessary components and libraries
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Biography from "./components/Biography";
-import Painting from "./components/Painting";
-import Art from "./components/Art";
+import CityInfo from "./components/CityInfo";
+import FamousLandmark from "./components/FamousLandmark";
+import OtherLandmarks from "./components/OtherLandmarks";
 
 function App() {
   return (
@@ -11,26 +10,26 @@ function App() {
       <nav>
         <ul>
           <li>
-            <Link to="/biography">Biography</Link>
+            <Link to="/city-info">Информация о городе</Link>
           </li>
           <li>
-            <Link to="/famous">Painting</Link>
+            <Link to="/famous-landmark">
+              Самая известная достопримечательность
+            </Link>
           </li>
           <li>
-            <Link to="/art">Art</Link>
+            <Link to="/other-landmarks">Другие достопримечательности</Link>
           </li>
         </ul>
       </nav>
+
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/biography" element={<Biography />} />
-        <Route path="/famous" element={<Painting />} />
-        <Route path="/art" element={<Art />} />
+        <Route path="/city-info" element={<CityInfo />} />
+        <Route path="/famous-landmark" element={<FamousLandmark />} />
+        <Route path="/other-landmarks" element={<OtherLandmarks />} />
       </Routes>
     </Router>
   );
 }
-function Home() {
-  return <div>Welcome to the Home Page!</div>;
-}
+
 export default App;
