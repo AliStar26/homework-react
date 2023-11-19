@@ -1,59 +1,54 @@
 import React, { useState } from "react";
 import "./App.css";
-import ProductCard from "./components/ProductCard";
-import Cart from "./components/Cart";
+import Display from "./components/Display";
+import Button from "./components/Button";
 
 function App() {
-  const [cartItems, setCartItems] = useState([]);
+  const [input, setInput] = useState("");
+  const [result, setResult] = useState("");
 
-  const products = [
-    {
-      id: 1,
-      name: "Товар 1",
-      description: "Описание товара 1",
-      price: 2800,
-    },
-    {
-      id: 2,
-      name: "Товар 2",
-      description: "Описание товара 2",
-      price: 500,
-    },
-  ];
+  const handleButtonClick = (value) => {
+    setInput((prevInput) => prevInput + value);
+  };
 
-  const addToCart = (product) => {
-    const existingItemIndex = cartItems.findIndex(
-      (item) => item.id === product.id
-    );
-    if (existingItemIndex !== -1) {
-      const updatedCart = [...cartItems];
-      updatedCart[existingItemIndex].quantity++;
-      setCartItems(updatedCart);
-    } else {
-      setCartItems([...cartItems, { ...product, quantity: 1 }]);
+  const handleCalculate = () => {
+    try {
+      setResult(eval(input).toString());
+    } catch (error) {
+      setResult("Ошибка");
     }
   };
 
+  const handleClear = () => {
+    setInput("");
+    setResult("");
+  };
+
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "flex-start",
-      }}
-    >
-      <div>
-        {products.map((product) => (
-          <ProductCard
-            key={product.id}
-            name={product.name}
-            description={product.description}
-            price={product.price}
-            addToCart={() => addToCart(product)}
-          />
-        ))}
+    <div className="calculator">
+      <Display input={input} result={result} />
+      <div className="buttons">
+        <Button value="1" onClick={() => handleButtonClick("1")} />
+        <Button value="2" onClick={() => handleButtonClick("2")} />
+        <Button value="3" onClick={() => handleButtonClick("3")} />
+        <Button value="4" onClick={() => handleButtonClick("4")} />
+        <Button value="5" onClick={() => handleButtonClick("5")} />
+        <Button value="6" onClick={() => handleButtonClick("6")} />
+        <Button value="7" onClick={() => handleButtonClick("7")} />
+        <Button value="8" onClick={() => handleButtonClick("8")} />
+        <Button value="9" onClick={() => handleButtonClick("9")} />
+        <Button value="0" onClick={() => handleButtonClick("0")} />
+        <Button value="+" onClick={() => handleButtonClick("+")} />
+        <Button value="*" onClick={() => handleButtonClick("*")} />
+        <Button value="/" onClick={() => handleButtonClick("/")} />
+        <Button value="-" onClick={() => handleButtonClick("-")} />
+        <Button value="C" onClick={handleClear} className="clearButton" />
+        <Button
+          value="="
+          onClick={handleCalculate}
+          className="calculateButton"
+        />
       </div>
-      <Cart cartItems={cartItems} />
     </div>
   );
 }

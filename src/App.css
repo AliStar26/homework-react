@@ -1,48 +1,20 @@
-/* App.css */
+.calculator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
 
-/* Стили для карточки товара */
-.product-card {
+.display {
+  width: 200px;
+  margin-bottom: 10px;
   border: 1px solid #ccc;
-  padding: 20px;
-  margin: 20px;
-  width: 300px;
+  padding: 10px;
+  text-align: right;
 }
 
-.product-card img {
-  max-width: 100%;
-}
-
-.product-card h3 {
-  margin-top: 10px;
-  margin-bottom: 5px;
-}
-
-.product-card button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 8px 15px;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-/* Стили для корзины */
-.cart {
-  border: 1px solid #ccc;
-  padding: 20px;
-  margin: 20px;
-  width: 300px;
-}
-
-.cart h2 {
-  margin-bottom: 15px;
-}
-
-.cart ul {
-  padding: 0;
-  list-style: none;
-}
-
-.cart ul li {
-  margin-bottom: 5px;
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
 }
